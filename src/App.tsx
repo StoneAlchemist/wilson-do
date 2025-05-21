@@ -22,7 +22,8 @@ function App() {
           count is {count}
         </button>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          Hello! My name is <b>Wilson</b>, and this is my personal website. I'm trying to figure out
+          what the hell is happening in this life.
         </p>
       </div>
       <p className="read-the-docs">
