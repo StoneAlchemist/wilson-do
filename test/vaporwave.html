@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wilson.do</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(135deg, #2b1055, #7597de);
+        font-family: 'Courier New', monospace;
+        color: #fefefe;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      h1, h2 {
+        font-family: 'Lucida Console', Monaco, monospace;
+      }
+      a {
+        color: #ff77e9;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .vaporwave-shadow {
+        text-shadow: 2px 2px #ff77e9, -2px -2px #00ffff;
+      }
+    </style>
+  </head>
+  <body class="p-6">
+    <main class="max-w-2xl mx-auto space-y-12">
+		<header class="text-center">
+			<h1 class="text-5xl md:text-6xl font-bold vaporwave-shadow">wilson.do</h1>
+			<p id="full-name" class="text-purple-200 text-lg"></p>
+			<p class="text-pink-200 mt-1.5" style="font-size: 11px;">As I am.</p>
+		</header>
+
+      <section>
+        <h2 class="text-2xl mb-2 text-cyan-300">💭 Recent Thoughts</h2>
+        <ul class="space-y-1">
+          <li>— What is to be done?</li>
+          <li>— To what extent can we enjoy slop?</li>
+          <li>— If Ivan Karamazov had a blog, would he ever post?</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl mb-2 text-pink-300">📚 Reading Shrine</h2>
+        <ul class="space-y-1">
+          <li>*The Brothers Karamazov* — tagged: guilt, faith, court drama</li>
+          <li>*What Is to Be Done?* — Lenin as your chaotic leftist uncle</li>
+          <li>*Prison Diary* by Ho Chi Minh — quiet resistance in verses</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl mb-2 text-purple-300">🧠 Parts Work Map</h2>
+        <p>A clickable map of the characters in my head. Coming soon. They’re shy.</p>
+      </section>
+
+	  <section>
+        <h2 class="text-2xl mb-2 text-yellow-300">🗯️ Random Quote</h2>
+        <p id="quote" class="italic text-center text-white"></p>
+      </section>
+
+	  <section>
+        <h2 class="text-2xl mb-2 text-green-300">🎧 Song I'm Into Right Now</h2>
+        <p class="text-white italic text-center">"Song About Me" – TV Girl</p>
+		<div class = "flex justify-center">
+			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5ExWCOYjZbMEZCIdlfH2dO?utm_source=generator" width="60%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+	</div>
+	</section>
+
+      <footer class="text-center text-pink-200 text-sm mt-12">
+		<p><span id="date"></span></p>
+		<p><span id="clock"></span></p>
+		<p>email me: <a href="mailto:wd@wilson.do">wd@wilson.do</a></p>
+      </footer>
+    </main>
+
+	<script>
+		const dateElement = document.getElementById("date");
+		const clockElement = document.getElementById("clock");
+		const quoteElement = document.getElementById("quote");
+		const full_nameElement = document.getElementById("full-name");
+  
+		const today = new Date();
+		dateElement.textContent = today.toLocaleDateString("en-US", {
+		  year: "numeric",
+		  month: "long",
+		  day: "numeric"
+		});
+  
+		function updateClock() {
+		  const now = new Date();
+		  clockElement.textContent = now.toLocaleTimeString("en-US", {
+			hour: "2-digit",
+			minute: "2-digit",
+			second: "2-digit"
+		  });
+		}
+  
+		const quotes = [
+        "Suffering is the true test of life. – Dostoevsky",
+        "What is to be done? – Lenin",
+        "Don't look at me like that, said the protector.",
+        "Even the void has weight.",
+        "Reality is just consensus hallucination.",
+		"A man can surely do what he wills to do, but he cannot determine what he wills. - Arthur Schopenhauer"
+      ];
+
+      function showRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        quoteElement.textContent = quotes[randomIndex];
+      }
+
+		updateClock(); // call once immediately
+		setInterval(updateClock, 1000); // update every second
+		function typeText(text, elementId, speed = 50) {
+			const element = document.getElementById(elementId);
+			element.textContent = '';
+			let i = 0;
+			function type() {
+				if (i < text.length) {
+				element.textContent += text.charAt(i);
+				i++;
+				setTimeout(type, speed);
+				}
+			}
+			type();
+		}
+		showRandomQuote();
+		typeText("Wilson Nguyễn Đỗ", "full-name", 80);
+	  </script>
+  </body>
+</html>
